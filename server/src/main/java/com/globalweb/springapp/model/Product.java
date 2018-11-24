@@ -8,7 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @MappedSuperclass
-abstract class Product extends AbstractEntity {
+public abstract class Product extends AbstractEntity {
 
     @Column
     @NotNull
