@@ -45,4 +45,9 @@ export class CompanyService {
             .pipe(map(res => res.json()));
     }
 
+    getCompanyProducts(companyId: number) {
+        return this.http.get(this.baseUrlService + companyId + '/products')
+            .pipe(map(res => res.json()));
+    }
+
 }
