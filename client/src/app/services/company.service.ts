@@ -33,7 +33,7 @@ export class CompanyService {
     }
 
     editCompany(company: Company) {
-        return this.http.put(this.baseUrlService, JSON.stringify(company), this.options)
+        return this.http.put(this.baseUrlService + company.id, JSON.stringify(company), this.options)
             .pipe(map(res => res.json()));
     }
 

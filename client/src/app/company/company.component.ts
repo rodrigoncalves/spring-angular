@@ -24,12 +24,12 @@ export class CompanyComponent implements OnInit {
     }
 
     edit(id: number): void {
-        this.router.navigate(['/companies/:id/edit', id])
+        this.router.navigate(['/company/', id, 'edit'])
     }
 
     delete(id: number, index: number): void {
         if (confirm("Deseja realmente excluir este registro?")) {
-            this.companyService.deleteCompany(id).subscribe(response => {
+            this.companyService.deleteCompany(id).subscribe(res => {
                 // remove row from table
                 this.companies.splice(index, 1);
             }, error => alert(error));

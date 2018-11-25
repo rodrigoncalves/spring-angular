@@ -32,15 +32,14 @@ export class FormCompanyComponent implements OnInit {
 
     save(): void {
         if (this.company.id == undefined) {
-            this.companyService.addCompany(this.company).subscribe(response => {
-                this.company = <Company>response;
+            this.companyService.addCompany(this.company).subscribe(() => {
                 this.router.navigate(['/companies']);
-                alert("Empresa salva com sucesso");
+                alert("Registro salvo com sucesso");
             }, error => alert(error));
         } else {
-            this.companyService.editCompany(this.company).subscribe(response => {
+            this.companyService.editCompany(this.company).subscribe(() => {
                 this.router.navigate(['/companies']);
-                alert("Empresa salva com sucesso");
+                alert("Registro salvo com sucesso");
             }, error => alert(error));
         }
 
