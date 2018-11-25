@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { Company } from "src/app/model/company";
 import { Router, ActivatedRoute } from "@angular/router";
 import { CompanyService } from "src/app/services/company.service";
-import { ServerResponse } from "src/app/services/server.response";
 
 @Component({
     selector: 'app-form-company',
@@ -21,7 +20,7 @@ export class FormCompanyComponent implements OnInit {
 
     ngOnInit() {
         this.activatedRoute.params.subscribe(params => {
-            if (params['name'] == undefined) {
+            if (params['id'] == undefined) {
                 this.title = "Cadastro de Empresa"
             } else {
                 this.title = "Editar Empresa";
@@ -34,22 +33,16 @@ export class FormCompanyComponent implements OnInit {
     save(): void {
         if (this.company.id == undefined) {
             this.companyService.addCompany(this.company).subscribe(response => {
-                let res: ServerResponse = <ServerResponse>response;
-
-                alert(res.message);
-                if (res.code == 1) {
-                    this.company = new Company();
-                }
+                this.company = <Company>response;
+                this.router.navigate(['/companies']);
+                alert("Empresa salva com sucesso");
             }, error => alert(error));
         } else {
             this.companyService.editCompany(this.company).subscribe(response => {
-                let res: ServerResponse = <ServerResponse>response;
-
-                alert(res.message)
-                if (res.code == 1) {
-                    this.router.navigate(['/companies']);
-                }
+                this.router.navigate(['/companies']);
+                alert("Empresa salva com sucesso");
             }, error => alert(error));
         }
+
     }
 }

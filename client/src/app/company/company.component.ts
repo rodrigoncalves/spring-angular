@@ -25,7 +25,7 @@ export class CompanyComponent implements OnInit {
     }
 
     edit(id: number): void {
-        this.router.navigate(['/companies/form', id])
+        this.router.navigate(['/companies/:id/edit', id])
     }
 
     delete(id: number, index: number): void {

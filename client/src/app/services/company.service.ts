@@ -27,7 +27,9 @@ export class CompanyService {
 
     addCompany(company: Company) {
         return this.http.post(this.baseUrlService, JSON.stringify(company), this.options)
-            .pipe(map(res => res.json()));
+            .pipe(map(res => {
+                return res.json();
+            }));
     }
 
     editCompany(company: Company) {

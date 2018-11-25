@@ -1,5 +1,5 @@
 <h3>{{title}}</h3>
-<a [routerLink]="">Cadastrar novo</a>
+<a [routerLink]="['/company/new']">Cadastrar novo</a>
 <br><br>
 
 <table>
@@ -17,7 +17,7 @@
         <td>{{ company.id }}</td>
         <td>{{ company.name }}</td>
         <td>{{ company.products.length }}</td>
-        <td><a [routerLink]="['/companies/', company.id]">Ver</a></td>
+        <td><a [routerLink]="['/companies', company.id]">Ver</a></td>
         <td><a (click)="edit(company.id);">Editar</a></td>
         <td><a (click)="delete(company.id, i);">Excluir</a></td>
         </tr>
