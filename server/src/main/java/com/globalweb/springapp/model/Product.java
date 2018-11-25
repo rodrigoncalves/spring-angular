@@ -7,8 +7,8 @@ import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@MappedSuperclass
-public abstract class Product extends AbstractEntity {
+@Entity
+public class Product extends AbstractEntity {
 
     @Column
     @NotNull
