@@ -22,6 +22,12 @@ public class CompanyController {
         return companyRepository.findAll();
     }
 
+    @GetMapping("/companies/{companyId}")
+    public Company getCompany(@PathVariable Long companyId) {
+        return companyRepository.findById(companyId)
+                .orElseThrow(() -> new ResourceNotFoundException("Company not found with id " + companyId));
+    }
+
     @PostMapping("/companies")
     public Company createCompany(@Valid @RequestBody Company company) {
         return companyRepository.save(company);

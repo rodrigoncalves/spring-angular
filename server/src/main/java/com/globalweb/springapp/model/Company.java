@@ -20,7 +20,7 @@ public class Company extends AbstractEntity {
     @NotNull
     private String name;
 
-    @OneToMany(mappedBy = "company")
+    @OneToMany(mappedBy = "company", orphanRemoval = true)
     private List<Product> products;
 
     public Company(String name) {

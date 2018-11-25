@@ -48,14 +48,10 @@ public class ProductController {
                 }).orElseThrow(() -> new ResourceNotFoundException("Company not found with id " + companyId));
     }
 
-    @PutMapping("/companies/{companyId}/products/{productId}")
+    @PutMapping("/products/{productId}")
     public Product updateProduct(@PathVariable Long companyId,
                                  @PathVariable Long productId,
                                  @Valid @RequestBody Product productRequest) {
-        if (!companyRepository.existsById(companyId)) {
-            throw new ResourceNotFoundException("Company not found with id " + companyId);
-        }
-
         return productRepository.findById(productId)
                 .map(product -> {
                     product.setId(productId);
@@ -68,13 +64,9 @@ public class ProductController {
                 }).orElseThrow(() -> new ResourceNotFoundException("Product not found with id " + productId));
     }
 
-    @DeleteMapping("/companies/{companyId}/products/{productId}")
+    @DeleteMapping("/products/{productId}")
     public ResponseEntity<?> deleteProduct(@PathVariable Long companyId,
                                            @PathVariable Long productId) {
-        if (!companyRepository.existsById(companyId)) {
-            throw new ResourceNotFoundException("Company not found with id " + companyId);
-        }
-
         return productRepository.findById(productId)
                 .map(product -> {
                     productRepository.delete(product);
