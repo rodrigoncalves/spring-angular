@@ -29,8 +29,8 @@ public class SpringAppApplication {
 
 	@Bean
 	CommandLineRunner runner() {
-		return args -> {
 
+		return args -> {
 			// Clean database
 			companyRepository.deleteAll();
 

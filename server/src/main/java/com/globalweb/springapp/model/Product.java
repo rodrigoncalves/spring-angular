@@ -30,4 +30,8 @@ public class Product extends AbstractEntity {
     @JsonIgnore
     private Company company;
 
+    public Long getCompanyId() {
+        return company.getId();
+    }
+
 }
