@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Company } from '../model/company';
 import { CompanyService } from '../services/company.service';
 import { Router } from '@angular/router';
-import { ServerResponse } from '../services/server.response';
 
 @Component({
     selector: 'app-company',
@@ -31,14 +30,8 @@ export class CompanyComponent implements OnInit {
     delete(id: number, index: number): void {
         if (confirm("Deseja realmente excluir este registro?")) {
             this.companyService.deleteCompany(id).subscribe(response => {
-                let res: ServerResponse = <ServerResponse>response;
-
-                alert(res.message);
-
-                if (res.code == 1) { // success
-                    // remove row from table
-                    this.companies.splice(index, 1);
-                }
+                // remove row from table
+                this.companies.splice(index, 1);
             }, error => alert(error));
         }
     }

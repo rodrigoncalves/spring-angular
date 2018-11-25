@@ -38,8 +38,7 @@ export class CompanyService {
     }
 
     deleteCompany(companyId: number) {
-        return this.http.delete(this.baseUrlService + companyId)
-            .pipe(map(res => res.json()));
+        return this.http.delete(this.baseUrlService + companyId);
     }
 
     getCompany(companyId: number) {
