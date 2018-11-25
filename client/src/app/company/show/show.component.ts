@@ -5,11 +5,11 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { Product } from "src/app/model/product";
 
 @Component({
-    selector: 'app-view-company',
-    templateUrl: './view.component.html',
+    selector: 'app-show-company',
+    templateUrl: './show.component.html',
     styleUrls: ['../company.component.css']
 })
-export class ViewCompanyComponent implements OnInit {
+export class ShowCompanyComponent implements OnInit {
 
     private company: Company;
     private products: Product[];

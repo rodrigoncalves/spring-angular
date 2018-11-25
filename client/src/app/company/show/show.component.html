@@ -17,5 +17,10 @@
         <td><a (click)="edit(company.id);">Editar</a></td>
         <td><a (click)="delete(company.id, i);">Excluir</a></td>
         </tr>
+        <tr>
+            <td colspan="5" style="text-align: right;">Total de Registros: {{ products.length }}</td>
+        </tr>
     </tbody>
+
+    <a [routerLink]="['/companies']">Voltar</a>
 </table>

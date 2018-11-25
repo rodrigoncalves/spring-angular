@@ -12,7 +12,7 @@ import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
 import { FormCompanyComponent } from './company/form/form.component';
 import { routing } from './app.routes';
-import { ViewCompanyComponent } from './company/view/view.component';
+import { ShowCompanyComponent } from './company/show/show.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,7 @@ import { ViewCompanyComponent } from './company/view/view.component';
     HomeComponent,
     CompanyComponent,
     FormCompanyComponent,
-    ViewCompanyComponent
+    ShowCompanyComponent
   ],
   imports: [
     BrowserModule,
