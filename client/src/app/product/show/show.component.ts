@@ -3,7 +3,6 @@ import { Company } from "src/app/model/company";
 import { CompanyService } from "src/app/services/company.service";
 import { Router, ActivatedRoute } from "@angular/router";
 import { Product } from "src/app/model/product";
-import { ProductService } from "src/app/services/product.service";
 
 @Component({
     selector: 'app-show-company',
@@ -16,7 +15,6 @@ export class ShowCompanyComponent implements OnInit {
     private products: Product[];
 
     constructor(private companyService: CompanyService,
-        private productService: ProductService,
         private router: Router,
         private activatedRoute: ActivatedRoute) {
     }
@@ -41,19 +39,6 @@ export class ShowCompanyComponent implements OnInit {
                     this.router.navigate(['/companies'])
                 });
         });
-    }
-
-    edit(id: number): void {
-        this.router.navigate(['/product/', id, 'edit'])
-    }
-
-    delete(id: number, index: number): void {
-        if (confirm("Deseja realmente excluir este registro?")) {
-            this.productService.deleteProduct(id).subscribe(res => {
-                // remove row from table
-                this.products.splice(index, 1);
-            }, error => alert(error));
-        }
     }
 
 }

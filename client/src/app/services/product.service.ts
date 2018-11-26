@@ -43,8 +43,7 @@ export class ProductService {
     }
 
     deleteProduct(productId: number) {
-        return this.http.delete(this.baseUrlService + "/products/" + productId)
-            .pipe(map(res => res.json()));
+        return this.http.delete(this.baseUrlService + "/products/" + productId);
     }
 
 }

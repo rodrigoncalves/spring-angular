@@ -1,4 +1,4 @@
-<h3>{{company.name}}</h3>
+<h3>{{product.name}}</h3>
 <a [routerLink]="['/product/new']">Adicionar produto</a>
 <br><br>
 
@@ -15,7 +15,7 @@
         <tr *ngFor="let product of products; let i = index;">
         <td>{{ product.name }}</td>
         <td>{{ product.value | currency: 'BRL' }}</td>
-        <td><a [routerLink]="['/companies/', company.id]">Ver</a></td>
+        <td><a [routerLink]="['/companies/', product.id]">Ver</a></td>
         <td><a (click)="edit(product.id);">Editar</a></td>
         <td><a (click)="delete(product.id, i);">Excluir</a></td>
         </tr>
