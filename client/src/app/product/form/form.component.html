@@ -1,0 +1,28 @@
+<form [formGroup]="productForm" (ngSubmit)="save()">
+
+    <br/>
+    <h3>{{title}}</h3>
+
+    <label>Nome:
+        <input type="input" formControlName="name" size="30" [(ngModel)]="product.name"/>
+    </label>
+
+    <br><br>
+
+    <label>Preço:
+        <input type="input" formControlName="value" size="30" [(ngModel)]="product.value"/>
+    </label>
+
+    <br><br>
+
+    <label for="company">Empresa</label>
+    <br>
+    <select class="form-control" id="company" formControlName="companyId" required>
+        <option *ngFor="let company of companies" [value]="company.id">{{company.name}}</option>
+    </select>
+
+    <input type="hidden" formControlName="id" [(ngModel)]="product.id"/>
+
+    <button type="submit">Salvar</button>
+
+</form>

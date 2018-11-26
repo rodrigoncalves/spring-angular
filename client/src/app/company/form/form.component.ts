@@ -27,7 +27,7 @@ export class FormCompanyComponent implements OnInit {
                 this.companyService.getCompany(Number(params['id']))
                     .subscribe(res => this.company = res);
             }
-        })
+        });
     }
 
     save(): void {
@@ -42,6 +42,5 @@ export class FormCompanyComponent implements OnInit {
                 alert("Registro salvo com sucesso");
             }, error => alert(error));
         }
-
     }
 }
