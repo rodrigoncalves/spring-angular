@@ -5,5 +5,5 @@ import { Component } from "@angular/core";
     templateUrl: './home.component.html'
 })
 export class HomeComponent {
-    private message: string = "Home"
+    private message: string = "Projeto Globalweb. Autor: Rodrigo Gonçalves.";
 }
