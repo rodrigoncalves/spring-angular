@@ -36,8 +36,8 @@ export class ProductService {
             .pipe(map(res => res.json()));
     }
 
-    editProduct(product: Product) {
-        return this.http.put(this.baseUrlService + "/products/" + product.id,
+    editProduct(companyId: number, product: Product) {
+        return this.http.put(this.baseUrlService + "/companies/" + companyId + "/products/" + product.id,
             JSON.stringify(product), this.options)
             .pipe(map(res => res.json()));
     }

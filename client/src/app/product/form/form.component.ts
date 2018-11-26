@@ -31,7 +31,7 @@ export class FormProductComponent implements OnInit {
                 this.title = "Cadastro de Produtos"
             } else {
                 this.title = "Editar Produtos";
-                this.companyService.getCompany(Number(params['id']))
+                this.productService.getProduct(Number(params['id']))
                     .subscribe(res => this.product = res);
             }
         });
@@ -56,7 +56,7 @@ export class FormProductComponent implements OnInit {
                 alert("Registro salvo com sucesso");
             }, error => alert(error));
         } else {
-            this.productService.editProduct(this.product).subscribe(() => {
+            this.productService.editProduct(companyId, this.product).subscribe(() => {
                 this.router.navigate(['/companies']);
                 alert("Registro salvo com sucesso");
             }, error => alert(error));

@@ -18,7 +18,7 @@
     <label for="company">Empresa</label>
     <br>
     <select class="form-control" id="company" formControlName="companyId" required>
-        <option *ngFor="let company of companies" [value]="company.id">{{company.name}}</option>
+        <option *ngFor="let company of companies" [value]="company.id" [selected]="product.company_id == company.id">{{company.name}}</option>
     </select>
 
     <input type="hidden" formControlName="id" [(ngModel)]="product.id"/>

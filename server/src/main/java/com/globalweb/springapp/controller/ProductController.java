@@ -1,15 +1,18 @@
 package com.globalweb.springapp.controller;
 
 import com.globalweb.springapp.exception.ResourceNotFoundException;
+import com.globalweb.springapp.model.Company;
 import com.globalweb.springapp.model.Product;
 import com.globalweb.springapp.repository.CompanyRepository;
 import com.globalweb.springapp.repository.ProductRepository;
+import com.globalweb.springapp.request.ProductRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -48,18 +51,25 @@ public class ProductController {
                 }).orElseThrow(() -> new ResourceNotFoundException("Company not found with id " + companyId));
     }
 
-    @PutMapping("/products/{productId}")
+    @GetMapping("/products/{productId}")
+    public Product getProduct(@PathVariable Long productId) {
+        return productRepository.findById(productId)
+                .orElseThrow(() -> new ResourceNotFoundException("Product not found with id " + productId));
+    }
+
+    @PutMapping("companies/{companyId}/products/{productId}")
     public Product updateProduct(@PathVariable Long companyId,
                                  @PathVariable Long productId,
-                                 @Valid @RequestBody Product productRequest) {
+                                 @Valid @RequestBody ProductRequest productRequest) {
+        Company company = companyRepository.findById(companyId)
+                .orElseThrow(() -> new ResourceNotFoundException("Company not found with id " + companyId));
+
         return productRepository.findById(productId)
                 .map(product -> {
                     product.setId(productId);
                     product.setName(productRequest.getName());
                     product.setValue(productRequest.getValue());
-                    if (productRequest.getCompany() != null) {
-                        product.setCompany(productRequest.getCompany());
-                    }
+                    product.setCompany(company);
                     return productRepository.save(product);
                 }).orElseThrow(() -> new ResourceNotFoundException("Product not found with id " + productId));
     }
