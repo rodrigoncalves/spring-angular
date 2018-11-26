@@ -56,8 +56,8 @@ export class FormProductComponent implements OnInit {
                 alert("Registro salvo com sucesso");
             }, error => alert(error));
         } else {
-            this.productService.editProduct(companyId, this.product).subscribe(() => {
-                this.router.navigate(['/companies']);
+            this.productService.editProduct(this.product).subscribe(() => {
+                this.router.navigate(['/companies', companyId]);
                 alert("Registro salvo com sucesso");
             }, error => alert(error));
         }

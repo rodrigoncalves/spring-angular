@@ -57,10 +57,10 @@ public class ProductController {
                 .orElseThrow(() -> new ResourceNotFoundException("Product not found with id " + productId));
     }
 
-    @PutMapping("companies/{companyId}/products/{productId}")
-    public Product updateProduct(@PathVariable Long companyId,
-                                 @PathVariable Long productId,
+    @PutMapping("/products/{productId}")
+    public Product updateProduct(@PathVariable Long productId,
                                  @Valid @RequestBody ProductRequest productRequest) {
+        Long companyId = productRequest.getCompany_id();
         Company company = companyRepository.findById(companyId)
                 .orElseThrow(() -> new ResourceNotFoundException("Company not found with id " + companyId));
 
